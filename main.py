@@ -11,17 +11,17 @@ with open("./data-result.json","r") as f:
 def convertFromFormat1 (jsonObject):
 
     # IMPLEMENT: Conversion From Type 1
-  locationObject = jsonObject ['location'].split('/'),
+  locationParts = jsonObject ['location'].split('/'),
   result = {
     'deviceID' : jsonObject ['deviceID'],
     'deviceType' : jsonObject ['deviceType'],
     'timestamp' : jsonObject ['timestamp'],
     'location' : {
-      'country' : locationObject[0],
-      'city' : locationObject[1],
-      'area': locationObject[2],
-      'factory': locationObject[3],
-      'section': locationObject[4],
+      'country' : locationParts[0],
+      'city' : locationParts[1],
+      'area': locationParts[2],
+      'factory': locationParts[3],
+      'section': locationParts[4],
     },
     'data':{
       'status': jsonObject['operationStatus'],
@@ -41,7 +41,7 @@ def convertFromFormat2 (jsonObject):
   )
 
   timestamp = round(
-    (date - datetime.datetime (1950, 1, 1).total_seconds()*1000),
+    (date - datetime.datetime (1970, 1, 1).total_seconds()*1000),
   )
 
 result = {
