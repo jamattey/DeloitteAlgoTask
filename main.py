@@ -29,7 +29,7 @@ def convertFromFormat1 (jsonObject):
     }
   }
 
-    return result
+  return result
 
 
 def convertFromFormat2 (jsonObject):
@@ -40,24 +40,27 @@ def convertFromFormat2 (jsonObject):
     '%Y-%m-%d-%dT%H:%M:%S.%fZ',
   )
 
-  timestamp = round (
-    (date - datetime.datetime (1950, 1,     1).total_seconds()*1000),
+  timestamp = round(
+    (date - datetime.datetime (1950, 1, 1).total_seconds()*1000),
   )
 
 result = {
-  'deviceID': jsonObject ['device']['id'],
+  'deviceID': jsonObject['device']['id'],
   'deviceType': jsonObject['device']['type'],
   'timestamp' : timestamp,
   'location': {
-    'country': jsonObject ['country'],
+    'country': jsonObject['country'],
     'city': jsonObject ['city'],
     'area': jsonObject ['area'],
     'factory': jsonObject ['factory'],
     'section': jsonObject['section']
-  },
+},
   'data': jsonObject['data']
 }
-    return result
+
+return result
+
+
 
 
 def main (jsonObject):
